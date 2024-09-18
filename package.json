@@ -1,0 +1,37 @@
+{
+  "name": "pglite-poc",
+  "version": "1.0.0",
+  "description": "A quick poc of the use of pglite in the browser",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@electric-sql/pglite": "^0.2.7",
+    "copy-webpack-plugin": "^12.0.2",
+    "crypto-browserify": "^3.12.0",
+    "drizzle-orm": "^0.33.0",
+    "next": "14.2.7",
+    "process": "^0.11.10",
+    "react": "^18",
+    "react-dom": "^18",
+    "stream-browserify": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "drizzle-kit": "^0.24.2",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.7",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  }
+}
