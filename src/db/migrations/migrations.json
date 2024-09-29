@@ -1,0 +1,10 @@
+[
+  {
+    "sql": [
+      "CREATE TABLE IF NOT EXISTS \"Number\" (\n\t\"ID\" serial PRIMARY KEY NOT NULL,\n\t\"value\" integer DEFAULT 0\n);\n"
+    ],
+    "bps": true,
+    "folderMillis": 1726680458496,
+    "hash": "f05911434ac69c6ee51b8b29d696f58ea57f28de4ee34236d83011838f747cd5"
+  }
+]

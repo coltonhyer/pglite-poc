@@ -2,9 +2,19 @@ import { PGlite } from "@electric-sql/pglite";
 import { drizzle } from "drizzle-orm/pglite";
 
 import * as schema from "./schema";
+import migrations from "./migrations/migrations.json";
+import migrator from "../../migrator.ts";
 
-const client = await PGlite.create("idb://test-database");
+let db: ReturnType<typeof drizzle> | null = null;
 
-const db = drizzle(client, { schema });
+export const initDB = async () => {
+  const client = await PGlite.create("idb://test-database");
+
+  db = drizzle(client, { schema });
+
+  await db.dialect.migrate(migrations, db.session, {
+    migrationsFolder: "./drizzle",
+  });
+};
 
 export default db;
