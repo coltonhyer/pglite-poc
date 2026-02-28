@@ -6,15 +6,24 @@ import migrations from "./migrations/migrations.json";
 import migrator from "../../migrator.ts";
 
 let db: ReturnType<typeof drizzle> | null = null;
+let initPromise: Promise<ReturnType<typeof drizzle>> | null = null;
 
 export const initDB = async () => {
-  const client = await PGlite.create("idb://test-database");
+  if (initPromise) return initPromise;
 
-  db = drizzle(client, { schema });
+  initPromise = (async () => {
+    const client = await PGlite.create("idb://test-database");
 
-  await db.dialect.migrate(migrations, db.session, {
-    migrationsFolder: "./drizzle",
-  });
+    db = drizzle(client, { schema });
+
+    // @ts-ignore
+    await db.dialect.migrate(migrations, db.session, {
+      migrationsFolder: "./drizzle",
+    });
+    return db;
+  })();
+
+  return initPromise;
 };
 
-export default db;
+export { db };
